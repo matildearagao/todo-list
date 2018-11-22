@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const list = document.querySelector('#book-list ul');
+    const totalDiv = document.querySelector('#total');
 
     //delete book
     list.addEventListener('click', function (e) {
@@ -10,32 +11,62 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+
+
+
     //add book
     const addBook = document.forms['add-book'];
     addBook.addEventListener('submit', function (e) {
         e.preventDefault();
         const value = addBook.querySelector('input[type="text"]').value;
+        const priceValue = document.querySelector('input[type="number"]').value;
+
+        function totalValue() {
+            var itemCount = document.getElementsByClassName('price').length;
+            var totalValue = 0;
+            for(var i = 0; i < itemCount; i++)
+            {
+                totalValue = totalValue + priceValue;
+            }
+        };
+        totalValue();
+
 
         //create elements
         const li = document.createElement('li');
         const bookName = document.createElement('span');
         const deleteBtn = document.createElement('span');
+        const price = document.createElement('span');
+        const totalBudget = document.createElement('p');
+
 
         //add content
         deleteBtn.textContent = 'delete';
         bookName.textContent = value;
+        price.textContent = priceValue;
+        totalBudget.textContent = totalValue;
+
 
         //add styles
         deleteBtn.classList.add('delete');
         bookName.classList.add('name');
+        price.classList.add('price');
+        totalBudget.classList.add('price');
 
         //append to DOM 
         li.appendChild(bookName);
         li.appendChild(deleteBtn);
+        li.appendChild(price);
 
         //append li to DOM
         list.appendChild(li);
+
+
+        totalDiv.appendChild(totalBudget);
+
     });
+
+
 
     //hide books
     const hideBox = document.querySelector('#hide');

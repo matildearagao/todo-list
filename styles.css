@@ -62,6 +62,13 @@ h1, h2{
 #book-list li:hover{
     border-color: #9361bf;
 }
+.price{
+    background: #9361bf;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
 
 .delete{
     float: right;
@@ -75,6 +82,8 @@ h1, h2{
 .delete:hover{
     background: #333;
 }
+
+
 
 #add-book{
     display: flex;
