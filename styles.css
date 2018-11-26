@@ -7,6 +7,13 @@ body{
 h1, h2{
     font-weight: normal;
 }
+h2{
+    text-align: center;
+}
+h4{
+    display: inline;
+
+}
 
 #wrapper{
     width: 90%;
@@ -21,19 +28,20 @@ h1, h2{
 }
 
 #page-banner{
-    background: #eee ;
-    padding: 10px 0;
+    background: darkred;
+    padding: 20px;
+    color: white;
+    display: flex;
 
 }
 
 #page-banner h1, #page-banner p{
-    width: 100%;
-    text-align: center;
     margin: 10px 0;
 }
-
+#page-banner h1{
+    text-transform: uppercase;
+}
 #page-banner input{
-    width: 90%;
     max-width: 300px;
     margin: 20px auto;
     display: block;
@@ -43,27 +51,30 @@ h1, h2{
     font-size: 16px;
     color: #444;
 }
+#banner-wrapper{
+    width: 70%;
+}
 
-#book-list, #add-book, #tabbed-content{
+#gifts-list, #add-gift, #tabbed-content{
     margin: 30px;
 }
 
-#book-list ul, #tabbed-content ul{
+#gifts-list ul, #tabbed-content ul{
     list-style-type: none;
     padding: 0;
 }
 
-#book-list li{
+#gifts-list li{
     padding: 20px;
     border-left: 5px solid #ddd;
     margin: 20px 10px;
 }
 
-#book-list li:hover{
-    border-color: #9361bf;
+#gifts-list li:hover{
+    border-color:darkgreen;
 }
 .price{
-    background: #9361bf;
+    background:darkgreen;
     padding: 6px;
     border-radius: 4px;
     cursor: pointer;
@@ -72,7 +83,7 @@ h1, h2{
 
 .delete{
     float: right;
-    background: #9361bf;
+    background: darkred;
     padding: 6px;
     border-radius: 4px;
     cursor: pointer;
@@ -85,14 +96,14 @@ h1, h2{
 
 
 
-#add-book{
+#add-gift{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-#add-book input{
+#add-gift input{
     display: block;
     margin: 20px 0;
     padding: 10px;
@@ -104,9 +115,9 @@ h1, h2{
     float: left;
 }
 
-#add-book button{
-    border: 1px solid #9361bf;
-    background: #9361bf;
+#add-gift button{
+    border: 1px solid darkred;
+    background: darkred;
     padding: 10px 20px;
     font-size: 16px;
     display: inline-block;
@@ -120,21 +131,21 @@ h1, h2{
     color: white;
 }
 
-#add-book:after{
+#add-gift:after{
     content: '';
     display: block;
     clear: both;
 }
 
-#add-book #hide{
+#add-gift #hide{
     width: 30px;
 }
 
-#add-book label{
+#add-gift label{
     line-height: 52px;
 }
 
-#add-book-field{
+#add-gilft-field{
     display: inline;
 }
 
@@ -154,4 +165,29 @@ h1, h2{
 }
 #tabbed-content .panel.active{
     display: block;
+}
+
+.name::after{
+    content: ' ';
+}
+
+.price-value::after{
+    content: ' €'
+}
+
+#divTotal{
+    display: inline;
+}
+#total::after, #totalBudget::after{
+    content: ' €';
+
+}
+
+.col{
+    width: 40%;
+    display: inline-grid;
+
+}
+.row{
+    display: flex;
 }
