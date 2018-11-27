@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const list = document.querySelector('#gifts-list ul');
     const total = document.querySelector('#total');
 
+
     //chart js
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -13,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // The data for our dataset
         data: {
-            labels: ["Budget", "Total"],
+            labels: ["Budget", "Left to Spend"],
             datasets: [{
                 label: "My First dataset",
-                backgroundColor: ['#006400', '#8b0000'],
-                borderColor: ['#006400', '#8b0000'],
-                data: [0, 10],
+                backgroundColor: [ '#8b0000', '#006400'],
+                borderColor: ['#8b0000', '#006400'],
+                data: [0, 0],
             }]
         },
 
@@ -33,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function addData() {
         var tbudget = 0;
         var tbudget = parseInt(totalBudget.textContent);
-        chart.data.datasets[0].data = [tbudget, 50];
-        chart.data.labels[0] = "budget";
+        var totalChart = tbudget - parseInt(total.textContent);
+        chart.data.datasets[0].data = [tbudget, totalChart];
         chart.update();
     }
 
@@ -95,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
             totalValue = totalValue + parseInt(values[i].textContent);
         }
         total.textContent = totalValue;
-        document.querySelector('input[type="number"]').value = "";
+        addGift.querySelector('input[type="number"]').value = "";
         addGift.querySelector('input[type="text"]').value = "";
-
+        addData();
     });
 
 
@@ -112,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalValue = totalValue + parseInt(values[i].textContent);
             }
             total.textContent = totalValue;
+addData();
         }
     });
 
