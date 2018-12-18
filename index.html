@@ -4,102 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+
     <script src="app.js"></script>
 
     <title>Xtmas Gifts</title>
 </head>
 
 <body>
-    <div id="wrapper">
-        <header>
-            <div id="page-banner">
-                <div id="banner-wrapper">
-                    <h1 class="title">Xtmas list</h1>
-                    <p>Gifts to buy</p>
-                </div>
-                <form id="search-gifts">
-                    <input type="text" placeholder="Search gift..." />
+    <div class="jumbotron text-center">
+        <h1>Xtmas list</h1>
 
-                </form>
-            </div>
-        </header>
-        <div id="row">
-            <div class="col" id="gifts-list">
-                <h2 class="title">Gifts to Buy</h2>
-                <ul>
-                    <li>
-                        <span class="name">Gift 1</span>
-                        <span class="price price-value"> 30</span>
-                        <span class="delete">delete</span>
-                    </li>
-                    <li>
-                        <span class="name">Gift 2</span>
-                        <span class="price price-value"> 30</span>
-                        <span class="delete">delete</span>
-                    </li>
-                    <li>
-                        <span class="name">Gift 3</span>
-                        <span class="price price-value"> 30</span>
-                        <span class="delete">delete</span>
-                    </li>
-                    <li>
-                        <span class="name">Gift 4</span>
-                        <span class="price price-value"> 30</span>
-                        <span class="delete">delete</span>
-                    </li>
-                </ul>
-                <div id=divTotal>
-                    <h4>Total Spent: </h4>
-                    <span id="total"> 0 </span>
-                </div>
-                <div id="divBudget">
-                    <h4>Budget:</h4>
-                    <span id="totalBudget">0</span>
-
-                </div>
-                <form id="budget">
-                    <input name="budget-input" type="number" placeholder="Total budget" />
-                    <button>Add</button>
-                </form>
-            </div>
-
-            <div class="col">
-                <h2>Budget Control</h2>
-                <canvas id="myChart"></canvas>
-
-
-
-            </div>
+        <div class="col-11 mx-auto quote-container ">
+            <p class="text-muted"><span id="quote">Set your Xmas Spirit ON! </span></p>
+            <button class="btn btn-secondary" id="generate-btn">GO!</button>
         </div>
-        <form id="add-gift">
 
-            <div id="add-gift-field">
-                <input type="text" placeholder="Add a gift..." />
-                <input type="number" placeholder="price" />
-                <button>Add</button>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="card">
+
+                    <h5 class="card-header text-center">Set your Budget and Gifts</h5>
+                    <div class="card-body">
+
+                        <form id="budget" class="input-group">
+                            <input name="budget-input" class="form-control" type="number" placeholder="Total budget" />
+                            <button class="btn btn-secondary">add</button>
+                        </form>
+                        <form id="add-gift" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Gift & Price</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Add a gift..." />
+                            <input type="number" class="form-control" aria-label="price" />
+                            <button class="btn btn-secondary">add</button>
+                        </form>
+                        <form id="search-gifts" class="input-group">
+                            <input type="text" class="form-control" placeholder="Search gift..." />
+                        </form>
+                        <div id="gifts-list">
+                            <ul id="ulGifts"></ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
 
 
-
-
-        <div id="tabbed-content">
-            <ul class="tabs">
-                <li data-target="#about" class="active">About </li>
-                <li data-target="#contact">Contact </li>
-            </ul>
-            <div class="panel active" id="about">
-                <p>Content for about tab...</p>
-                <p>Lorem ipsum</p>
-            </div>
-            <div class="panel " id="contact">
-                <p>Content for contact tab...</p>
-                <p>Lorem ipsum</p>
+            <!-- 2nd col -->
+            <div class="col-xs-12 col-md-6">
+                <div class="card">
+                    <h5 class="card-header text-center">Control your Christmas Budget</h5>
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myChart" style="height:300px; margin-bottom: 40px"></canvas>
+                        </div>
+                        <div class="card-deck">
+                            <div class="card">
+                                <div id="divBudget" class="card-body sq">
+                                    <h6>Budget:</h6>
+                                    <span id="totalBudget">0</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div id="divTotal" class="card-body sq sq-green">
+                                    <h6>Total Spent: </h6>
+                                    <span id="total"> 0 </span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div id="divLeftSpend" class="card-body sq sq-red">
+                                    <h6>Left to Spend: </h6>
+                                    <span id="leftSpend"> 0 </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="/jquery-3.3.1.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 

@@ -1,0 +1,135 @@
+body{
+    font-family: Roboto;
+    color: #444;
+}
+.quote-container{
+    margin-top: 20px;
+}
+
+h5{
+    font-weight: 300;
+    font-size: 16px;
+}
+h6{
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.red{
+    background-color: darkred;
+}
+.green{
+    background-color: darkgreen;
+}
+
+.sq{
+    color: black;
+    text-align: center;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+.sq-red{
+    color: white;
+
+    background-color: rgb(175, 68, 68);
+}
+.sq-green{
+    color: white;
+
+    background-color: rgb(88, 158, 120);
+}
+
+#search-gifts{
+    display: none;
+    width: 100%;
+}
+
+#search-gifts > .form-control {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 100% !important;
+    margin-bottom: 0;
+}
+
+
+
+
+#gifts-list ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#gifts-list li{
+    padding: 20 0 20px 5px;
+    border-left: 5px solid #ddd;
+}
+
+#gifts-list li:hover{
+    border-color: rgb(88, 158, 120);
+}
+.price{
+    color: black;
+    margin-left: 20px;
+}
+
+.delete{
+    float: right;
+    background: rgb(175, 68, 68);
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+.name{
+    margin-left: 8px;
+}
+
+.delete:hover{
+    background: rgb(88, 158, 120);
+}
+
+
+
+
+#add-gift:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#add-gift #hide{
+    width: 30px;
+}
+
+#add-gift label{
+    line-height: 52px;
+}
+
+#add-gilft-field{
+    display: inline;
+}
+
+
+.name::after{
+    content: ' ';
+}
+
+.price-value::after{
+    content: ' €'
+}
+
+#divTotal{
+    display: inline;
+}
+#total::after, #totalBudget::after, #leftSpend::after{
+    content: ' €';
+
+}
+
+
+
+
+
+
