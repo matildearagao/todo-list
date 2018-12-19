@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- main css -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+
 
     <script src="app.js"></script>
 
@@ -22,7 +21,11 @@
 
         <div class="col-11 mx-auto quote-container ">
             <p class="text-muted"><span id="quote">Set your Xmas Spirit ON! </span></p>
-            <button class="btn btn-secondary" id="generate-btn">GO!</button>
+            <button class="btn btn-secondary sq-green" id="generate-btn">GO!</button>
+            <div id="timerContainer">
+                <p class="light">Xtmas time in:</p>
+                <div id="timer"> </div>
+            </div>
         </div>
 
 
@@ -40,11 +43,9 @@
                             <button class="btn btn-secondary">add</button>
                         </form>
                         <form id="add-gift" class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Gift & Price</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Add a gift..." />
-                            <input type="number" class="form-control" aria-label="price" />
+
+                            <input type="text" class="form-control" aria-label="Add a gift..." placeholder="Gift" />
+                            <input type="number" class="form-control" aria-label="price" placeholder="Price" />
                             <button class="btn btn-secondary">add</button>
                         </form>
                         <form id="search-gifts" class="input-group">

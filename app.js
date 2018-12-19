@@ -1,59 +1,83 @@
 document.addEventListener('DOMContentLoaded', function () {
+    (function () {
+        var countDownDate = new Date("Dec 25, 2018 00:00:00").getTime();
 
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    })();
 
 
     (function () {
         const quotes = [
-          {
-            quote:
-            "Let It Snow! Let It Snow! Let It Snow!"          
-        },
-          {
-            quote:
-            "Santa baby, I want a yacht and really that's not a lot; Been an angel all year"      
+            {
+                quote:
+                    "Let It Snow! Let It Snow! Let It Snow!"
             },
-          {
-            quote:
-            "Decorations of red on a green Christmas tree; Won't be the same dear, if you're not here with me"         
-        },
-          {
-            quote: "The price of anything is the amount of life you exchange for it.",
-          },
-          {
-            quote:
-              "Life is like a landscape. You live in the midst of it but can describe it only from the vantage point of distance. ",
-          },
-          {
-            quote:
-              "A critic is someone who never actually goes to the battle, yet who afterwards comes out shooting the wounded.",
-          }
+            {
+                quote:
+                    "Santa baby, I want a yacht and really that's not a lot; Been an angel all year"
+            },
+            {
+                quote:
+                    "Decorations of red on a green Christmas tree; Won't be the same dear, if you're not here with me"
+            },
+            {
+                quote: "The price of anything is the amount of life you exchange for it.",
+            },
+            {
+                quote:
+                    "Life is like a landscape. You live in the midst of it but can describe it only from the vantage point of distance. ",
+            },
+            {
+                quote:
+                    "A critic is someone who never actually goes to the battle, yet who afterwards comes out shooting the wounded.",
+            }
         ];
-      
+
         const btn = document.getElementById('generate-btn');
-      
+
         btn.addEventListener('click', function () {
-          let random = Math.floor(Math.random()*quotes.length);
-          // console.log(random);
-      
-          document.getElementById('quote').textContent = quotes[random].quote;
-      
+            let random = Math.floor(Math.random() * quotes.length);
+            // console.log(random);
+
+            document.getElementById('quote').textContent = quotes[random].quote;
+
         });
-      
+
     })();
 
 
 
-
-
     var addBudget = document.forms['budget'];
-    var totalBudget = document.querySelector('#totalBudget');
     const list = document.querySelector('#gifts-list ul');
     const total = document.querySelector('#total');
-    const leftSpend = document.querySelector('#leftSpend')
     const gifts = list.getElementsByTagName('li');
     const searchBar = document.forms['search-gifts'].querySelector('input');
     const searchGifts = document.forms['search-gifts']
-    const divLeftSpend = document.querySelector('#divLeftSpend');
+    var inputBudget = document.querySelector('input[name="budget-input"]');
 
 
     //chart js
@@ -78,24 +102,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //updating chart
-    function addData() {
+    function addData(totalBudget) {
         var tbudget = 0;
         var tbudget = parseInt(totalBudget.textContent);
         var totalChart = tbudget - parseInt(total.textContent);
         chart.data.datasets[0].data = [tbudget, totalChart];
         chart.update();
-
     }
+
+    function render() {
+        var values = document.querySelectorAll('.price-value');
+        var total = document.querySelector('#total');
+        var leftSpend = document.querySelector('#leftSpend')
+        var totalBudget = document.querySelector('#totalBudget');
+        var totalValue = 0;
+
+        for (var i = 0; i < values.length; i++) {
+            totalValue = totalValue + parseInt(values[i].textContent);
+        }
+        total.textContent = totalValue;
+        leftSpend.textContent = totalBudget.textContent - totalValue;
+
+        addData(totalBudget);
+    }
+
 
     //add budget
     addBudget.addEventListener('submit', function (e) {
         e.preventDefault();
-        var inputBudget = document.querySelector('input[name="budget-input"]');
+        var totalBudget = document.querySelector('#totalBudget');
         totalBudget.textContent = inputBudget.value;
-        inputBudget.value = '';
-        addData();
+        render();
     });
-
 
 
     //add gift
@@ -107,68 +145,28 @@ document.addEventListener('DOMContentLoaded', function () {
         var priceValue = addGift.querySelector('input[type="number"]');
 
         //create elements
-        const li = document.createElement('li');
-        const giftName = document.createElement('span');
-        const deleteBtn = document.createElement('span');
-        const price = document.createElement('span');
+        list.insertAdjacentHTML('beforeend', `
+            <li>
+                <span class="name">${value.value}</span>
+                <span class="delete">delete</span>
+                <span class="price price-value">${priceValue.value}</span>
+            </li>
+        `)
 
-        //add content
-        deleteBtn.textContent = 'delete';
-        giftName.textContent = value.value;
-        price.textContent = priceValue.value;
-
-        //add styles
-        deleteBtn.classList.add('delete');
-        giftName.classList.add('name');
-        price.classList.add('price');
-        price.classList.add('price-value');
-        total.classList.add('total')
-
-        //append to DOM 
-        li.appendChild(giftName);
-        li.appendChild(deleteBtn);
-        li.appendChild(price);
-
-        //append li to DOM
-        list.appendChild(li);
-
-        //calculate total
-        var values = document.querySelectorAll('.price-value');
-        var totalValue = 0;
-        for (var i = 0; i < values.length; i++) {
-            totalValue = totalValue + parseInt(values[i].textContent);
-        }
-        total.textContent = totalValue;
-        value.value = "";
-        priceValue.value = "";
-        leftSpend.textContent = totalBudget.textContent - totalValue;;
+        render();
         filter();
-
-        addData();
     });
-
 
     //delete gift
     list.addEventListener('click', function (e) {
         if (e.target.className == 'delete') {
             const li = e.target.parentElement;
             list.removeChild(li);
-            var values = document.querySelectorAll('.price-value');
-            var totalValue = 0;
-            for (var i = 0; i < values.length; i++) {
-                totalValue = totalValue + parseInt(values[i].textContent);
-            }
-            total.textContent = totalValue;
-            leftSpend.textContent = totalBudget.textContent - totalValue;
 
-            addData();
+            render();
             filter();
         }
     });
-
-
-
-
 
     //search bar
     function filter() {
