@@ -45,15 +45,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     "Decorations of red on a green Christmas tree; Won't be the same dear, if you're not here with me"
             },
             {
-                quote: "The price of anything is the amount of life you exchange for it.",
+                quote: "Dancin' and prancin' in jingle bell square. In the frosty air.",
             },
             {
                 quote:
-                    "Life is like a landscape. You live in the midst of it but can describe it only from the vantage point of distance. ",
+                    "What a bright time, it's the right time. To rock the night away ",
             },
             {
                 quote:
-                    "A critic is someone who never actually goes to the battle, yet who afterwards comes out shooting the wounded.",
+                    "Jingle bell time is a swell time. To go ridin' in a one-horse sleigh",
             }
         ];
 
