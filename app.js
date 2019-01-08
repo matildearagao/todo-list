@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         type: 'doughnut',
         // The data for our dataset
         data: {
-            // labels: ["Budget", "Left to Spend"],
+            labels: ["Budget", "Left to Spend"],
             datasets: [{
                 // label: "My First dataset",
                 backgroundColor: ['rgba(175, 68, 68, 1)', 'rgba(88, 158, 120, 1)'],
@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var totalBudget = document.querySelector('#totalBudget');
         totalBudget.textContent = inputBudget.value;
         render();
+        inputBudget.value = '';
     });
 
 
@@ -155,6 +156,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         render();
         filter();
+        priceValue.value = '';
+        value.value = '';
     });
 
     //delete gift
